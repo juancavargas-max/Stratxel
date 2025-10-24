@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratXel Consulting - Strategy in Motion</title>
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --gradient-start: #0d9488;
+            --gradient-end: #84cc16;
+            --secondary: #64748b;
+            --light: #f1f5f9;
+            --dark: #0f172a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
+            padding-top: 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .paint-illustration {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        .services {
+            background-color: #fff;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .about {
+            background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+        }
+        
+        .about h2, .about h3 {
+            color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-img {
+            width: 100%;
+            border-radius: 10px;
+            height: 400px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+        
+        .testimonials {
+            background-color: #fff;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .approach {
+            background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .approach h2, .approach h3 {
+            color: white;
+        }
+        
+        .approach-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .approach-step {
+            display: flex;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .step-number {
+            background-color: white;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .industries {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .industries-list {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .industries-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .industries-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .industries-text p {
+            margin-bottom: 20px;
+        }
+        
+        .why-choose-us {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+        
+        .why-choose-us .industries-list li {
+            margin-bottom: 15px;
+        }
+        
+        .frameworks {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+        
+        .framework-diagram {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .framework-description {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 18px;
+            color: var(--secondary);
+        }
+        
+        .contact {
+            background-color: var(--light);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #fff;
+            font-size: 20px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .strategic-flow {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .strategic-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .strategic-flow-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .strategic-flow-icon {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .strategic-flow-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .strategic-flow-card ul {
+            list-style-type: none;
+        }
+        
+        .strategic-flow-card li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .strategic-flow-card li:before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .paint-illustration {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">StratXel Consulting</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#growth-framework">Growth Framework</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#industries">Industries</a></li>
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#strategic-flow">Strategic Flow</a></li>
+                    <li><a href="#why-choose-us">Why Choose Us</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>StratXel Consulting</h1>
+                <p class="subtitle">Aligning growth strategy from product to delivery—so companies scale faster, operate smarter, and retain customers longer. Make AI work for your business.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </div>
+        <div class="paint-illustration">
+            <svg viewBox="0 0 500 500" width="100%" height="100%">
+                <!-- Paint Can -->
+                <rect x="150" y="200" width="200" height="160" fill="#f5f5f5" stroke="#333" stroke-width="6" />
+                <path d="M150,220 L120,240 L120,380 L150,360 Z" fill="#e0e0e0" stroke="#333" stroke-width="4" />
+                <path d="M350,220 L380,240 L380,380 L350,360 Z" fill="#e0e0e0" stroke="#333" stroke-width="4" />
+                <rect x="120" y="240" width="260" height="140" fill="#e0e0e0" stroke="#333" stroke-width="4" />
+                
+                <!-- Paint Can Lid -->
+                <ellipse cx="250" cy="200" rx="105" ry="20" fill="#d0d0d0" stroke="#333" stroke-width="4" />
+                <ellipse cx="250" cy="180" rx="105" ry="20" fill="#f5f5f5" stroke="#333" stroke-width="4" />
+                
+                <!-- Paint Spills -->
+                <path d="M180,180 C150,150 160,100 200,80 C240,60 300,70 330,110 C360,150 350,160 320,170 C290,180 210,200 180,180 Z" fill="url(#paintGradient1)" stroke="#333" stroke-width="2" />
+                <path d="M350,250 C370,230 410,240 430,270 C450,300 430,350 390,360 C350,370 330,350 350,250 Z" fill="url(#paintGradient2)" stroke="#333" stroke-width="2" />
+                
+                <!-- Paint Drips -->
+                <path d="M200,180 Q210,220 220,240 Q230,220 240,180" fill="url(#paintGradient1)" />
+                <path d="M270,190 Q280,230 290,250 Q300,230 310,190" fill="url(#paintGradient2)" />
+                <path d="M380,280 Q390,320 400,340 Q410,320 420,280" fill="url(#paintGradient2)" />
+                
+                <!-- Gradients -->
+                <defs>
+                    <linearGradient id="paintGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0d9488"/>
+                        <stop offset="100%" style="stop-color:#34d399"/>
+                    </linearGradient>
+                    <linearGradient id="paintGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#84cc16"/>
+                        <stop offset="100%" style="stop-color:#a3e635"/>
+                    </linearGradient>
+                </defs>
+                
+                <!-- Paint Brush -->
+                <rect x="100" y="140" width="20" height="120" fill="#a0522d" transform="rotate(-30, 100, 140)" />
+                <path d="M60,110 Q80,80 100,105 L120,130 Q100,155 80,125 Z" fill="#f5f5f5" stroke="#333" stroke-width="2" transform="rotate(-30, 100, 140)" />
+                <path d="M60,110 L40,90 Q30,80 50,75 Q70,70 80,90 L100,105" fill="url(#paintGradient1)" stroke="#333" stroke-width="2" transform="rotate(-30, 100, 140)" />
+            </svg>
+        </div>
+    </section>
+    
+    <section id="growth-framework" class="frameworks">
+        <div class="container">
+            <h2>Our Growth Framework</h2>
+            <div class="framework-diagram">
+                <svg viewBox="0 0 800 400" width="100%" height="auto">
+                    <defs>
+                        <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0d9488"/>
+                            <stop offset="100%" style="stop-color:#84cc16"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Central Hub -->
+                    <circle cx="400" cy="200" r="80" fill="url(#circleGradient)" />
+                    <text x="400" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Scalable</text>
+                    <text x="400" y="220" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Growth</text>
+                    
+                    <!-- Spokes -->
+                    <line x1="400" y1="120" x2="400" y2="60" stroke="var(--primary)" stroke-width="3" />
+                    <line x1="471" y1="143" x2="521" y2="93" stroke="var(--primary)" stroke-width="3" />
+                    <line x1="480" y1="200" x2="560" y2="200" stroke="var(--primary)" stroke-width="3" />
+                    <line x1="471" y1="257" x2="521" y2="307" stroke="var(--primary)" stroke-width="3" />
+                    <line x1="400" y1="280" x2="400" y2="340" stroke="var(--primary)" stroke-width="3" />
+                    <line x1="329" y1="257" x2="279" y2="307" stroke="var(--primary)" stroke-width="3" />
+                    <line x1="320" y1="200" x2="240" y2="200" stroke="var(--primary)" stroke-width="3" />
+                    <line x1="329" y1="143" x2="279" y2="93" stroke="var(--primary)" stroke-width="3" />
+                    
+                    <!-- Outer Nodes -->
+                    <circle cx="400" cy="50" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="400" y="45" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Product</text>
+                    <text x="400" y="65" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Strategy</text>
+                    
+                    <circle cx="530" cy="83" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="530" y="78" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Sales</text>
+                    <text x="530" y="98" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Enablement</text>
+                    
+                    <circle cx="570" cy="200" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="570" y="195" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Sales</text>
+                    <text x="570" y="215" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Process</text>
+                    
+                    <circle cx="530" cy="317" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="530" y="312" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Go-to-</text>
+                    <text x="530" y="332" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Market</text>
+                    
+                    <circle cx="400" cy="350" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="400" y="345" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Delivery &</text>
+                    <text x="400" y="365" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Operations</text>
+                    
+                    <circle cx="270" cy="317" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="270" y="312" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Customer</text>
+                    <text x="270" y="332" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Success</text>
+                    
+                    <circle cx="230" cy="200" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="230" y="195" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Resource</text>
+                    <text x="230" y="215" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Optimization</text>
+                    
+                    <circle cx="270" cy="83" r="40" fill="white" stroke="var(--primary)" stroke-width="2" />
+                    <text x="270" y="78" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Revenue</text>
+                    <text x="270" y="98" text-anchor="middle" fill="var(--primary)" font-size="14" font-weight="bold">Growth</text>
+                </svg>
+            </div>
+            <div class="framework-description">
+                <p>Growth & scalability sit at the intersection of Product Strategy, Go-to-Market, Sales, and Delivery. Our framework ensures each function is aligned and working cohesively to unlock efficient, sustainable growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Product Strategy</h3>
+                    <p>We help align your product development with real market needs and delivery capabilities, ensuring features support scalability and fulfill client promises while solving genuine customer problems.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Go-to-Market & Sales Enablement</h3>
+                    <p>Develop clear, scalable GTM strategies and sales enablement materials that accurately represent your capabilities and prepare your team to sell what can truly be delivered.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Sales Process Optimization</h3>
+                    <p>Ensure your sales teams are perfectly aligned with product capabilities and structure deals that can be efficiently delivered, preventing overpromising and underdelivering.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Delivery & Operations</h3>
+                    <p>Build scalable, predictable delivery models that reduce over-customization and create streamlined operations that support profitable growth and customer satisfaction.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Customer Success & Support</h3>
+                    <p>Implement strategies that ensure customer expectations are consistently met or exceeded, while reducing support issues caused by delivery mismatches.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Revenue & Retention Strategy</h3>
+                    <p>Address alignment issues that hurt conversion rates, cash flow, and customer retention, creating systemic improvements that drive sustainable growth.</p>
+                </div>
+                <div class="service-card">
+                    <h3>AI Readiness</h3>
+                    <p>Build and launch your first operational AI solutions and make an impact on your sales and ROI. We help you identify the right opportunities and implement AI initiatives that deliver measurable business results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="industries" class="industries">
+        <div class="container">
+            <h2>Industries We Serve</h2>
+            <div class="industries-content">
+                <div class="industries-text">
+                    <p>At StratXel Consulting, we specialize in serving B2B and B2B2C companies across various sectors, with particular expertise in:</p>
+                    <ul class="industries-list">
+                        <li><strong>Fintech:</strong> Payment solutions, digital banking, lending platforms, and financial management tools</li>
+                        <li><strong>SaaS Companies:</strong> Enterprise software, cloud solutions, and platform providers</li>
+                        <li><strong>Professional Services:</strong> Consulting firms, agencies, and specialized service providers</li>
+                        <li><strong>Small and Medium Businesses:</strong> Across all industries seeking to leverage strategic alignment for growth</li>
+                    </ul>
+                    <p>Our cross-industry expertise allows us to bring proven frameworks and fresh perspectives to your unique business challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="approach">
+        <div class="container">
+            <h2>Our Approach</h2>
+            <div class="approach-steps">
+                <div class="approach-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Diagnose</h3>
+                        <p>We begin with a thorough assessment to identify systemic gaps that hinder scalability, revenue conversion, and customer retention.</p>
+                    </div>
+                </div>
+                <div class="approach-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Strategize</h3>
+                        <p>Based on diagnostic insights, we develop tailored strategies that align product, GTM, sales, and delivery functions with your growth objectives.</p>
+                    </div>
+                </div>
+                <div class="approach-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Implement</h3>
+                        <p>We work hands-on to implement strategic changes, ensuring execution actually supports your growth strategy across all functions.</p>
+                    </div>
+                </div>
+                <div class="approach-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Measure</h3>
+                        <p>We establish clear metrics to track improvements in revenue growth, operational efficiency, and customer retention.</p>
+                    </div>
+                </div>
+                <div class="approach-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Scale</h3>
+                        <p>With aligned functions and optimized processes, your business is positioned to scale effectively, increase revenue, and retain more customers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="strategic-flow" class="strategic-flow">
+        <div class="container">
+            <h2>Strategic Flow Checklist</h2>
+            <div class="strategic-flow-grid">
+                <div class="strategic-flow-card">
+                    <div class="strategic-flow-icon">✓</div>
+                    <h3>Sales Process</h3>
+                    <ul>
+                        <li>Are sales teams aligned with product capabilities?</li>
+                        <li>Are deals structured for what can actually be delivered?</li>
+                    </ul>
+                </div>
+                <div class="strategic-flow-card">
+                    <div class="strategic-flow-icon">✓</div>
+                    <h3>Product Strategy</h3>
+                    <ul>
+                        <li>Does the product support delivery scalability and client promises?</li>
+                        <li>Are features aligned with real customer problems?</li>
+                    </ul>
+                </div>
+                <div class="strategic-flow-card">
+                    <div class="strategic-flow-icon">✓</div>
+                    <h3>Go-to-Market & Sales Enablement</h3>
+                    <ul>
+                        <li>Is GTM strategy enabling clear, scalable selling
