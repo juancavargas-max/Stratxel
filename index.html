@@ -353,76 +353,64 @@
             background-color: #fff;
         }
         
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 900px;
+        .contact-content {
+            max-width: 800px;
             margin: 0 auto;
+            text-align: center;
         }
         
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 12px;
+        .contact-text {
+            margin-bottom: 40px;
+        }
+        
+        .contact-text h3 {
+            font-size: 28px;
             margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            font-family: inherit;
+            color: var(--dark);
         }
         
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        .contact-form select {
-            cursor: pointer;
-        }
-        
-        .contact-form button {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .contact-form button:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 20px;
-        }
-        
-        .contact-info p {
+        .contact-text p {
             font-size: 18px;
-            margin-bottom: 20px;
             line-height: 1.8;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .contact-email {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-            padding: 15px;
+            gap: 15px;
+            padding: 25px;
             background-color: var(--light);
-            border-radius: 5px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .contact-email:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-email span {
+            font-size: 32px;
+        }
+        
+        .contact-email div {
+            text-align: left;
+        }
+        
+        .contact-email strong {
+            display: block;
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 16px;
         }
         
         .contact-email a {
@@ -442,7 +430,7 @@
             text-align: center;
         }
         
-        @media (max-width: 768px) {
+                    @media (max-width: 768px) {
             .mobile-menu {
                 display: block;
             }
@@ -465,10 +453,6 @@
             
             .nav-links li {
                 margin: 10px 0;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
             }
             
             h1 {
@@ -510,15 +494,15 @@
             <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.2" />
+                    </linearGradient>
+                    <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
                         <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.3" />
                     </linearGradient>
-                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.4" />
-                    </linearGradient>
                     <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                         <feMerge>
                             <feMergeNode in="coloredBlur"/>
                             <feMergeNode in="SourceGraphic"/>
@@ -526,72 +510,92 @@
                     </filter>
                 </defs>
                 
-                <!-- Modern geometric abstract design -->
-                <g opacity="1">
-                    <!-- Large circles with glow -->
-                    <circle cx="150" cy="200" r="80" fill="url(#grad1)" opacity="0.6" filter="url(#glow)">
-                        <animate attributeName="r" values="80;90;80" dur="4s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="450" cy="400" r="100" fill="url(#grad1)" opacity="0.5" filter="url(#glow)">
-                        <animate attributeName="r" values="100;110;100" dur="5s" repeatCount="indefinite"/>
-                    </circle>
+                <!-- 3D Grid perspective effect -->
+                <g opacity="0.4">
+                    <line x1="100" y1="100" x2="500" y2="100" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="100" y1="200" x2="500" y2="200" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="100" y1="300" x2="500" y2="300" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="100" y1="400" x2="500" y2="400" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="100" y1="500" x2="500" y2="500" stroke="url(#grad1)" stroke-width="1.5"/>
                     
-                    <!-- Floating hexagons -->
-                    <polygon points="300,50 350,80 350,140 300,170 250,140 250,80" 
-                             fill="none" stroke="url(#grad2)" stroke-width="3" opacity="0.8">
-                        <animateTransform attributeName="transform" type="rotate" 
-                                        from="0 300 110" to="360 300 110" dur="20s" repeatCount="indefinite"/>
-                    </polygon>
-                    
-                    <polygon points="500,200 540,225 540,275 500,300 460,275 460,225" 
-                             fill="url(#grad1)" opacity="0.4">
-                        <animateTransform attributeName="transform" type="rotate" 
-                                        from="0 500 250" to="-360 500 250" dur="25s" repeatCount="indefinite"/>
-                    </polygon>
-                    
-                    <!-- Intersecting lines creating mesh -->
-                    <line x1="100" y1="100" x2="500" y2="300" stroke="url(#grad2)" stroke-width="2" opacity="0.6">
-                        <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3s" repeatCount="indefinite"/>
+                    <line x1="100" y1="100" x2="100" y2="500" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="200" y1="100" x2="200" y2="500" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="300" y1="100" x2="300" y2="500" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="400" y1="100" x2="400" y2="500" stroke="url(#grad1)" stroke-width="1.5"/>
+                    <line x1="500" y1="100" x2="500" y2="500" stroke="url(#grad1)" stroke-width="1.5"/>
+                </g>
+                
+                <!-- Floating data nodes with connections -->
+                <g opacity="0.8">
+                    <!-- Connection lines -->
+                    <line x1="200" y1="150" x2="300" y2="250" stroke="url(#grad2)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite"/>
                     </line>
-                    <line x1="100" y1="300" x2="500" y2="100" stroke="url(#grad2)" stroke-width="2" opacity="0.5">
-                        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="3.5s" repeatCount="indefinite"/>
+                    <line x1="300" y1="250" x2="450" y2="200" stroke="url(#grad2)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="300" y1="250" x2="350" y2="400" stroke="url(#grad2)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="450" y1="200" x2="350" y2="400" stroke="url(#grad2)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite"/>
                     </line>
                     
-                    <!-- Small dots creating constellation -->
-                    <circle cx="200" cy="150" r="5" fill="#ffffff" opacity="0.8">
-                        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                    <!-- Animated circles -->
+                    <circle cx="200" cy="150" r="15" fill="url(#grad1)" filter="url(#glow)">
+                        <animate attributeName="cy" values="150;145;150" dur="3s" repeatCount="indefinite"/>
+                        <animate attributeName="r" values="15;18;15" dur="3s" repeatCount="indefinite"/>
                     </circle>
-                    <circle cx="350" cy="250" r="6" fill="#ffffff" opacity="0.7">
-                        <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/>
+                    <circle cx="300" cy="250" r="20" fill="url(#grad1)" filter="url(#glow)">
+                        <animate attributeName="r" values="20;25;20" dur="2.5s" repeatCount="indefinite"/>
                     </circle>
-                    <circle cx="450" cy="180" r="4" fill="#ffffff" opacity="0.9">
-                        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="3s" repeatCount="indefinite"/>
+                    <circle cx="450" cy="200" r="15" fill="url(#grad1)" filter="url(#glow)">
+                        <animate attributeName="cx" values="450;455;450" dur="4s" repeatCount="indefinite"/>
+                        <animate attributeName="r" values="15;18;15" dur="4s" repeatCount="indefinite"/>
                     </circle>
-                    <circle cx="250" cy="350" r="5" fill="#ffffff" opacity="0.6">
-                        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.8s" repeatCount="indefinite"/>
+                    <circle cx="350" cy="400" r="18" fill="url(#grad1)" filter="url(#glow)">
+                        <animate attributeName="cy" values="400;395;400" dur="3.5s" repeatCount="indefinite"/>
+                        <animate attributeName="r" values="18;22;18" dur="3.5s" repeatCount="indefinite"/>
                     </circle>
-                    <circle cx="400" cy="320" r="7" fill="#ffffff" opacity="0.8">
-                        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.2s" repeatCount="indefinite"/>
-                    </circle>
-                    
-                    <!-- Curved paths -->
-                    <path d="M 50 400 Q 300 350 550 450" stroke="url(#grad2)" stroke-width="3" fill="none" opacity="0.5">
-                        <animate attributeName="d" 
-                                 values="M 50 400 Q 300 350 550 450;M 50 400 Q 300 380 550 450;M 50 400 Q 300 350 550 450" 
-                                 dur="6s" repeatCount="indefinite"/>
-                    </path>
-                    
-                    <!-- Rotating squares -->
-                    <rect x="380" y="80" width="40" height="40" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6">
-                        <animateTransform attributeName="transform" type="rotate" 
-                                        from="0 400 100" to="360 400 100" dur="15s" repeatCount="indefinite"/>
+                </g>
+                
+                <!-- Rising bars graph effect -->
+                <g opacity="0.6">
+                    <rect x="120" y="450" width="30" height="100" fill="url(#grad1)" rx="5">
+                        <animate attributeName="height" values="100;120;100" dur="2s" repeatCount="indefinite"/>
+                        <animate attributeName="y" values="450;430;450" dur="2s" repeatCount="indefinite"/>
                     </rect>
-                    
-                    <!-- Dynamic triangles -->
-                    <polygon points="150,450 200,550 100,550" fill="url(#grad1)" opacity="0.4">
+                    <rect x="170" y="420" width="30" height="130" fill="url(#grad1)" rx="5">
+                        <animate attributeName="height" values="130;150;130" dur="2.2s" repeatCount="indefinite"/>
+                        <animate attributeName="y" values="420;400;420" dur="2.2s" repeatCount="indefinite"/>
+                    </rect>
+                    <rect x="220" y="380" width="30" height="170" fill="url(#grad1)" rx="5">
+                        <animate attributeName="height" values="170;190;170" dur="2.4s" repeatCount="indefinite"/>
+                        <animate attributeName="y" values="380;360;380" dur="2.4s" repeatCount="indefinite"/>
+                    </rect>
+                </g>
+                
+                <!-- Orbiting particles -->
+                <g opacity="0.7">
+                    <circle cx="300" cy="300" r="5" fill="#ffffff">
                         <animateTransform attributeName="transform" type="rotate" 
-                                        from="0 150 500" to="180 150 500" dur="10s" repeatCount="indefinite"/>
-                    </polygon>
+                                        from="0 300 300" to="360 300 300" dur="10s" repeatCount="indefinite"/>
+                        <animateMotion path="M 0,0 m -80,0 a 80,80 0 1,0 160,0 a 80,80 0 1,0 -160,0" dur="10s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="300" cy="300" r="4" fill="#ffffff">
+                        <animateTransform attributeName="transform" type="rotate" 
+                                        from="0 300 300" to="-360 300 300" dur="8s" repeatCount="indefinite"/>
+                        <animateMotion path="M 0,0 m -120,0 a 120,120 0 1,0 240,0 a 120,120 0 1,0 -240,0" dur="8s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+                
+                <!-- Upward arrow path -->
+                <g opacity="0.5">
+                    <path d="M 480 520 L 480 80 M 465 95 L 480 80 L 495 95" 
+                          stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round">
+                        <animate attributeName="stroke-dasharray" values="0,600;600,0" dur="3s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+                    </path>
                 </g>
             </svg>
         </div>
@@ -843,41 +847,26 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2>Get in Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        <input type="email" id="email" name="email" placeholder="Your Email Address" required>
-                        <input type="tel" id="phone" name="phone" placeholder="Your Phone">
-                        <input type="text" id="country" name="country" placeholder="Your Country" required>
-                        <input type="text" id="role" name="role" placeholder="Your Role" required>
-                        <input type="text" id="industry" name="industry" placeholder="Your Industry" required>
-                        <select id="interest" name="interest" required>
-                            <option value="">Select Your Interest</option>
-                            <option value="Product Strategy">Product Strategy</option>
-                            <option value="Go-to-Market & Sales Enablement">Go-to-Market & Sales Enablement</option>
-                            <option value="Sales Process Optimization">Sales Process Optimization</option>
-                            <option value="Delivery & Operations">Delivery & Operations</option>
-                            <option value="Customer Success & Support">Customer Success & Support</option>
-                            <option value="Revenue & Retention Strategy">Revenue & Retention Strategy</option>
-                            <option value="AI Readiness">AI Readiness</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <textarea id="message" name="message" placeholder="Tell us about your needs..."></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
-                </div>
-                <div class="contact-info">
+            <div class="contact-content">
+                <div class="contact-text">
                     <h3>Let's Talk About Your Growth</h3>
                     <p>Ready to align your strategy and accelerate growth? We're here to help you scale faster, operate smarter, and retain customers longer.</p>
                     <p>Whether you're facing challenges with product-market fit, sales and delivery alignment, or operational scalability, our team brings the expertise to drive meaningful change.</p>
+                </div>
+                <div class="contact-methods">
                     <div class="contact-email">
                         <span>📧</span>
-                        <a href="mailto:Juan.Vargas@stratxel.com">Juan.Vargas@stratxel.com</a>
+                        <div>
+                            <strong>Email Us</strong>
+                            <a href="mailto:Juan.Vargas@stratxel.com">Juan.Vargas@stratxel.com</a>
+                        </div>
                     </div>
                     <div class="contact-email">
                         <span>💼</span>
-                        <a href="https://www.linkedin.com/company/stratxelconsulting" target="_blank" rel="noopener noreferrer">LinkedIn: StratXel Consulting</a>
+                        <div>
+                            <strong>Connect on LinkedIn</strong>
+                            <a href="https://www.linkedin.com/company/stratxelconsulting" target="_blank" rel="noopener noreferrer">StratXel Consulting</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -909,29 +898,6 @@
                     navLinks.classList.remove('active');
                 }
             });
-        });
-        
-        // Contact form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const country = document.getElementById('country').value;
-            const role = document.getElementById('role').value;
-            const industry = document.getElementById('industry').value;
-            const interest = document.getElementById('interest').value;
-            const message = document.getElementById('message').value;
-            
-            const subject = `New Inquiry from ${name} - ${interest}`;
-            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0ACountry: ${country}%0D%0ARole: ${role}%0D%0AIndustry: ${industry}%0D%0AInterest: ${interest}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
-            
-            window.location.href = `mailto:Juan.Vargas@stratxel.com?subject=${subject}&body=${body}`;
-            
-            // Optional: Show success message
-            alert('Thank you for your inquiry! Your email client will open with the message. Please click send.');
         });
     </script>
 </body>
